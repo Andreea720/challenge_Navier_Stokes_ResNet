@@ -47,5 +47,12 @@ In this step I am preparing the data for training the neural network. I have set
 ## Neural Network 
 Here is where the Neural network is training and guessing the behavior of the fluid. The neural network is a simple fully connected neural network of the size `[3] + [64] * 3 + [3]`, throught testing I have tried multiple model sizes and I have settled at this size as it produces the neural network that is large enough to capture required patterns and small enough to be trained very quickly. Normally 30k epochs require around 400 seconds on Google Colab T4 GPU. I have tried the model sizes up to `[3] + [128] * 6 + [3]` but they have proven to be inefficient in the required task.
 
+I am training the neural network for 40k epochs which shows the best convergence. The residual plot confirms: 
+![training_loss](imgs/model_training_loss.png)
+On it we can see that in general the loss gradually falls however some parameters are rising in loss so on average the best point to stop training appears to be around 40k.
+
+As well as that we can visualize the residual error of the model in comparison to the mathematical function:
+![pde_error.png](imgs/pde_error.png)
+
 ## Visualization 
 We are creating an animation of the plot which shows the velocity of the fluid and the direction it takes from the arrows. 
